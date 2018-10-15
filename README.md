@@ -10,6 +10,7 @@ An IoT app for house sharing applications. An app will connect with an existing 
 * Raspberry Pi
 * [Home assistant](https://www.home-assistant.io/)
 * Docker
+* JavaScript
 
 ## Authors
 * [Kamil Kwapisz](https://github.com/KamilKwapisz)
