@@ -150,3 +150,18 @@ def ajax_add_checkout_task(request):
         CheckOutTask.objects.create(device=device, task=task, preferred_state=state)
     return JsonResponse(True, safe=False)
 
+
+def ajax_validate_access_code(request):
+    data = request.GET.dict()
+    flat_id = data['flat_id']
+    code = data['code']
+    valid_code = Flat.objects.get(flat=flat_id).access_code
+    if valid_code == code and len(code) == 4 and code.isdigit():
+        return JsonResponse(True, safe=False)
+    else:
+        return JsonResponse(False, safe=False)
+
+
+def access_code(request, flat_id):
+    context = dict(flat_id=flat_id)
+    return render(request, "app/keypad.html", context)

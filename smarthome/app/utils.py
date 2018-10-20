@@ -23,3 +23,14 @@ def get_sensors_info() -> list:
             pass
     return sensors
 
+
+def parse_state_json(json_data):
+    try:
+        json_data = json.loads(json_data)
+        data = json_data['event']['data']
+        entity_id = data['entity_id']
+        name = data['new_state']['attributes']['friendly_name']
+        new_state = data['new_state']['state']
+        print(new_state)
+    except Exception as e:
+        pass
