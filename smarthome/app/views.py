@@ -5,11 +5,9 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import View, DetailView
 from django.shortcuts import render
-import homeassistant.remote as remote
 
 from .forms import UserForm
 from .models import Room, Host, Profile
-
 
 def index(request):
     return render(request, "app/index.html", {})
@@ -23,7 +21,7 @@ def ajax(request):
 def logout_view(request):
     logout(request)
     context = {}
-    return render(request, 'registration/logged_out.html', context)
+    return render(request, 'chlanie/logged_out.html', context)
 
 
 def login(request, *args, **kwargs):
