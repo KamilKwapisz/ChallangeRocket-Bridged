@@ -60,7 +60,14 @@ class Room(models.Model):
     beds_number = models.IntegerField(default=1)
     room_type = models.CharField(default="bedroom", choices=ROOM_TYPES, max_length=8)
     flat = models.ForeignKey(Flat, on_delete=models.CASCADE)
-    devices_number = models.IntegerField(blank=True, null=True)
+
+    @property
+    def devices(self):
+        return Device.objects.filter(room=room, is_allowed=True)
+
+    @property
+    def devices_number(self):
+        return Device.objects.filter(room=room, is_allowed=True).count()
 
     def save(self, *args, **kwargs):
         if not self.id and not self.name:
