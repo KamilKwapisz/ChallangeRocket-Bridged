@@ -7,7 +7,10 @@ from django.views.generic import View, DetailView
 from django.shortcuts import render
 
 from .forms import UserForm
-from .models import Room, Host, Profile
+from .models import Room, Host, Profile, Flat
+
+import homeassistant.remote as remote
+
 
 def index(request):
     return render(request, "app/index.html", {})
@@ -21,7 +24,7 @@ def ajax(request):
 def logout_view(request):
     logout(request)
     context = {}
-    return render(request, 'chlanie/logged_out.html', context)
+    return render(request, 'registration/logged_out.html', context)
 
 
 def login(request, *args, **kwargs):
@@ -71,27 +74,24 @@ def raspberry_connection():
     state = remote.get_state(api, 'binary_sensor.pir_office').state  # on / off
 
 
-def rooms_list(request):
+def flats_list(request):
     username = request.user.username
     user = User.objects.get(username=username)
     profile = Profile.objects.get(user=user)
     host = Host.objects.get(profile=profile)
-    user_rooms = Room.objects.filter(hosts=host)
-    context = dict(rooms=user_rooms)
+    user_flats = Flat.objects.filter(hosts=host)
+    context = dict(flats=user_flats)
 
-    return render(request, "app/rooms_list.html", context)
+    return render(request, "app/flats_list.html", context)
 
 
-class RoomDetailView(DetailView):
-    model = Room
-    template_name = "app/room.html"
+class FlatDetailView(DetailView):
+    model = Flat
+    template_name = "app/flat.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        room = self.get_object()
-        context['room'] = room
+        flat = self.get_object()
+        context['flat'] = flat
 
         return context
-
-
-

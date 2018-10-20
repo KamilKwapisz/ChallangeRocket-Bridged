@@ -10,7 +10,7 @@ class Profile(models.Model):
     surname = models.CharField(max_length=30, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.first_name} {self.surname}"
+        return f"{self.user.username}"
 
 
 @receiver(post_save, sender=User)
@@ -38,13 +38,32 @@ class Host(models.Model):
         return f"owner {self.profile.user.username}"
 
 
-class Room(models.Model):
+class Flat(models.Model):
     address = models.CharField(max_length=1000)
     surface = models.FloatField(blank=True, null=True)
     guests_number = models.IntegerField(default=1)
-    bedrooms_number = models.IntegerField(default=1)
-    bathrooms_number = models.IntegerField(default=1)
+    rooms_number = models.IntegerField(default=2)
     hosts = models.ManyToManyField(Host)
+
+
+class Room(models.Model):
+
+    ROOM_TYPES = (
+        ('bedroom', 'bedroom'),
+        ('kitchen', 'kitchen'),
+        ('bathroom', 'bathroom'),
+    )
+
+    beds_number = models.IntegerField(default=1)
+    room_type = models.CharField(default="bedroom", choices=ROOM_TYPES, max_length=8)
+    flat = models.ForeignKey(Flat, on_delete=models.CASCADE)
+    devices_number = models.IntegerField(blank=True, null=True)
+
+
+class Device(models.Model):
+    entity_id = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    state = models.CharField(max_length=3, choices=(("on", "on"), ("off", "off")))
 
 
 class Rent(models.Model):
