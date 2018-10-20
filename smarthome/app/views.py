@@ -7,7 +7,7 @@ from django.views.generic import View, DetailView
 from django.shortcuts import render
 
 from .forms import UserForm
-from .models import Room, Host, Profile, Flat, Device, Tenant, Rent
+from .models import Room, Host, Profile, Flat, Device, Tenant, Rent, CheckOutTask
 
 import homeassistant.remote as remote
 
@@ -113,4 +113,19 @@ def ajax_change_device_permission(request):
     device = Device.objects.get(pk=device_id)
     device.is_allowed = is_allowed
     device.save()
+    return JsonResponse(True, safe=False)
+
+
+def ajax_add_checkout_task(request):
+    data = request.GET.dict()
+    device_id = data['device_id']
+    device = Device.objects.get(pk=device_id)
+    task = data['task']
+    state = data['preferred_state']
+    if CheckOutTask.objects.filter(device=device).count() > 1:
+        check_task = CheckOutTask.objects.get(device=device)
+        check_task.preferred_state = state
+        check_task.task = task
+    else:
+        CheckOutTask.objects.create(device=device, task=task, preferred_state=state)
     return JsonResponse(True, safe=False)
