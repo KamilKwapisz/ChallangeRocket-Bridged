@@ -63,11 +63,11 @@ class Room(models.Model):
 
     @property
     def devices(self):
-        return Device.objects.filter(room=room, is_allowed=True)
+        return Device.objects.filter(room=self.pk, is_allowed=True)
 
     @property
     def devices_number(self):
-        return Device.objects.filter(room=room, is_allowed=True).count()
+        return Device.objects.filter(room=self.pk, is_allowed=True).count()
 
     def save(self, *args, **kwargs):
         if not self.id and not self.name:
