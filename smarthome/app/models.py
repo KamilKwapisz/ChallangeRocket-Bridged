@@ -63,7 +63,7 @@ class Room(models.Model):
 class Device(models.Model):
     entity_id = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
-    state = models.CharField(max_length=3, choices=(("on", "on"), ("off", "off")))
+    state = models.BooleanField(default=False)
 
 
 class Rent(models.Model):
@@ -76,3 +76,9 @@ class Rent(models.Model):
 class Sensors(models.Model):
     name = models.CharField(max_length=30)
     type = models.CharField(max_length=30)
+
+
+class CheckOutTask(models.Model):
+    device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    task = models.CharField(max_length=100)
+    preferred_state = models.BooleanField(default=False)
