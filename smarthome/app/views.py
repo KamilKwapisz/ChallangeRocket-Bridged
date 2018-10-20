@@ -1,8 +1,11 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import views as auth_views
 from django.http import HttpResponse, JsonResponse
+from django.views.generic import View, DetailView
 from django.shortcuts import render
 
+from .forms import UserForm
 
 def index(request):
     return render(request, "app/index.html", {})
