@@ -7,7 +7,7 @@ from django.views.generic import View, DetailView
 from django.shortcuts import render
 
 from .forms import UserForm
-from .models import Room, Host, Profile, Flat
+from .models import Room, Host, Profile, Flat, Device, Tenant, Rent
 
 import homeassistant.remote as remote
 
@@ -96,3 +96,21 @@ class FlatDetailView(DetailView):
 
         return context
 
+
+def host_device_permission(request, room_pk):
+    room = Room.objects.get(pk=room_pk)
+    devices = Device.objects.filter(room=room)
+    context = dict(devices=devices)
+    context['room'] = room
+
+    return render(request, "app/room_permissions.html", context)
+
+
+def ajax_change_device_permission(request):
+    data = request.GET.dict()
+    device_id = data['device_id']
+    is_allowed = data['is_allowed']
+    device = Device.objects.get(pk=device_id)
+    device.is_allowed = is_allowed
+    device.save()
+    return JsonResponse(True, safe=False)

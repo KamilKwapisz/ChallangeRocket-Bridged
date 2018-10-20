@@ -1,0 +1,10 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+<b>{{room.name}}</b></br>
+    {% if devices %}
+        {% for device in devices %}
+            {{device.entity_id}} -- {{device.is_allowed}}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -56,18 +56,29 @@ class Room(models.Model):
         ('kitchen', 'kitchen'),
         ('bathroom', 'bathroom'),
     )
-
+    name = models.CharField(max_length=30, blank=True, null=True)
     beds_number = models.IntegerField(default=1)
     room_type = models.CharField(default="bedroom", choices=ROOM_TYPES, max_length=8)
     flat = models.ForeignKey(Flat, on_delete=models.CASCADE)
     devices_number = models.IntegerField(blank=True, null=True)
 
+    def save(self, *args, **kwargs):
+        if not self.id and not self.name:
+            self.name = self.room_type
+        return super(Room, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.name} in flat {self.flat.address}"
+
 
 class Device(models.Model):
     entity_id = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
-    state = models.BooleanField(default=False)
     room = models.ForeignKey(Room, on_delete=models.CASCADE, blank=True, null=True)
+    is_allowed = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.entity_id})"
 
 
 class Rent(models.Model):
