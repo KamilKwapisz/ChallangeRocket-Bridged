@@ -1,6 +1,6 @@
 {% extends 'app/base.html' %}
 {% block body %}
     {% for room in rooms %}
-        {{ room.address }}
+        <a href="{% url 'app:room-detail' room.pk %}" >{{ room.address }}</a>
     {% endfor %}
 {% endblock %}
