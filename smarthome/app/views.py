@@ -1,12 +1,14 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.models import User
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import View, DetailView
 from django.shortcuts import render
 import homeassistant.remote as remote
 
 from .forms import UserForm
+from .models import Room, Host, Profile
 
 
 def index(request):
@@ -66,8 +68,17 @@ class RegisterView(View):
 
 
 def raspberry_connection():
-
-
     api = remote.API('http://172.16.230.225', 'tokyocommit')
     remote.get_state(api, 'binary_sensor.pir_office')
     state = remote.get_state(api, 'binary_sensor.pir_office').state  # on / off
+
+
+def rooms_list(request):
+    username = request.user.username
+    user = User.objects.get(username=username)
+    profile = Profile.objects.get(user=user)
+    host = Host.objects.get(profile=profile)
+    user_rooms = Room.objects.filter(hosts=host)
+    context = dict(rooms=user_rooms)
+
+    return render(request, "app/rooms_list.html", context)

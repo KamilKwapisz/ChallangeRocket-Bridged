@@ -9,6 +9,9 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=30, blank=True, null=True)
     surname = models.CharField(max_length=30, blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.user.username} - {self.first_name} {self.surname}"
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -22,11 +25,17 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Tenant(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"tenant {self.profile.user.username}"
 
 
 class Host(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"owner {self.profile.user.username}"
 
 
 class Room(models.Model):
@@ -35,7 +44,7 @@ class Room(models.Model):
     guests_number = models.IntegerField(default=1)
     bedrooms_number = models.IntegerField(default=1)
     bathrooms_number = models.IntegerField(default=1)
-    owners = models.ManyToManyField(Host)
+    hosts = models.ManyToManyField(Host)
 
 
 class Rent(models.Model):
