@@ -95,3 +95,4 @@ class FlatDetailView(DetailView):
         context['flat'] = flat
 
         return context
+

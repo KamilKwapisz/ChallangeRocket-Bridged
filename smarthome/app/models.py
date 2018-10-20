@@ -45,6 +45,9 @@ class Flat(models.Model):
     rooms_number = models.IntegerField(default=2)
     hosts = models.ManyToManyField(Host)
 
+    def __str__(self):
+        return self.address
+
 
 class Room(models.Model):
 
@@ -64,11 +67,13 @@ class Device(models.Model):
     entity_id = models.CharField(max_length=50)
     name = models.CharField(max_length=50)
     state = models.BooleanField(default=False)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, blank=True, null=True)
 
 
 class Rent(models.Model):
     hosts = models.ForeignKey(Host, on_delete=models.CASCADE)
     tenants = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    flat = models.ForeignKey(Flat, on_delete=models.CASCADE, blank=True, null=True)
     begin_date = models.DateField()
     end_date = models.DateField()
 
