@@ -58,7 +58,8 @@ class Room(models.Model):
         ('other', 'other'),
     )
     name = models.CharField(max_length=30, blank=True, null=True)
-    beds_number = models.IntegerField(default="other", choices=ROOM_TYPES, max_length=8)
+    beds_number = models.IntegerField(default=1,)
+    room_type = models.CharField(choices=ROOM_TYPES, max_length=8, default="other")
     flat = models.ForeignKey(Flat, on_delete=models.CASCADE)
 
     @property
