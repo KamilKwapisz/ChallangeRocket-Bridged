@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Profile, Host, Tenant
+
+admin.site.register(Profile)
+admin.site.register(Host)
+admin.site.register(Tenant)

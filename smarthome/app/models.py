@@ -37,3 +37,8 @@ class Rent(models.Model):
     tenants = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     begin_date = models.DateField()
     end_date = models.DateField()
+
+
+class Sensors(models.Model):
+    name = models.CharField(max_length=30)
+    type = models.CharField(max_length=30)
