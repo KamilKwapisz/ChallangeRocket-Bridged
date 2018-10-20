@@ -43,7 +43,7 @@ class Flat(models.Model):
     surface = models.FloatField(blank=True, null=True)
     guests_number = models.IntegerField(default=1)
     rooms_number = models.IntegerField(default=2)
-    hosts = models.ManyToManyField(Host)
+    host = models.ForeignKey(Host, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.address

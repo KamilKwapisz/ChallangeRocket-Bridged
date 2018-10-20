@@ -79,7 +79,7 @@ def flats_list(request):
     user = User.objects.get(username=username)
     profile = Profile.objects.get(user=user)
     host = Host.objects.get(profile=profile)
-    user_flats = Flat.objects.filter(hosts=host)
+    user_flats = Flat.objects.filter(host=host)
     context = dict(flats=user_flats)
 
     return render(request, "app/flats_list.html", context)
@@ -93,6 +93,8 @@ class FlatDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         flat = self.get_object()
         context['flat'] = flat
+        rooms = Room.objects.filter(flat=flat)
+        context['rooms'] = rooms
 
         return context
 

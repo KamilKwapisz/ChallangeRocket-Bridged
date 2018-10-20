@@ -1,7 +1,7 @@
 {% extends 'app/base.html' %}
 
 {% block body %}
-<b>{{room.name}}</b></br>
+<b>Room {{room.name}}</b></br>
     {% if permissions %}
 Permissions:</br>
         {% for perm in permissions %}

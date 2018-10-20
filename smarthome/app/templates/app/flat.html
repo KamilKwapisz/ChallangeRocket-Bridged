@@ -2,4 +2,13 @@
 
 {% block body %}
 <b>{{flat.address}}</b>
+</br>
+</br>
+{% if rooms %}
+    Rooms:</br>
+    {% for room in rooms %}
+        <a href="{% url 'app:room-detail' room.pk %}" >{{ room.name }}</a></br>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}
