@@ -4,8 +4,10 @@ from django.contrib.auth import views as auth_views
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import View, DetailView
 from django.shortcuts import render
+import homeassistant.remote as remote
 
 from .forms import UserForm
+
 
 def index(request):
     return render(request, "app/index.html", {})
@@ -19,7 +21,7 @@ def ajax(request):
 def logout_view(request):
     logout(request)
     context = {}
-    return render(request, 'chlanie/logged_out.html', context)
+    return render(request, 'registration/logged_out.html', context)
 
 
 def login(request, *args, **kwargs):
@@ -61,3 +63,11 @@ class RegisterView(View):
             form.add_error('password_confirm', 'Passwords do not match')
 
         return render(request, self.template_name, {'form': form})
+
+
+def raspberry_connection():
+
+
+    api = remote.API('http://172.16.230.225', 'tokyocommit')
+    remote.get_state(api, 'binary_sensor.pir_office')
+    state = remote.get_state(api, 'binary_sensor.pir_office').state  # on / off
