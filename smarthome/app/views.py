@@ -80,3 +80,18 @@ def rooms_list(request):
     context = dict(rooms=user_rooms)
 
     return render(request, "app/rooms_list.html", context)
+
+
+class RoomDetailView(DetailView):
+    model = Room
+    template_name = "app/room.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        room = self.get_object()
+        context['room'] = room
+
+        return context
+
+
+
