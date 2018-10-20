@@ -16,20 +16,13 @@ class Host(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
 
-class Flat(models.Model):
+class Room(models.Model):
     address = models.CharField(max_length=1000)
-    street = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    zip_code = models.CharField(max_length=10)
     surface = models.FloatField(blank=True, null=True)
     guests_number = models.IntegerField(default=1)
     bedrooms_number = models.IntegerField(default=1)
-    beds_number = models.IntegerField(default=1)
     bathrooms_number = models.IntegerField(default=1)
     owners = models.ManyToManyField(Host)
-    rules = models.TextField(blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    price = models.IntegerField(blank=True, null=True)
 
 
 class Rent(models.Model):
