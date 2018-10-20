@@ -97,6 +97,24 @@ class FlatDetailView(DetailView):
         return context
 
 
+class RoomDetailView(DetailView):
+    model = Room
+    template_name = "app/room.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        room = self.get_object()
+        devices = Device.objects.filter(room=room, is_allowed=True)
+        context['room'] = room
+        context['devices'] = devices
+        tasks = list()
+        for device in devices:
+            tasks += list(CheckOutTask.objects.filter(device=device))
+        context['tasks'] = tasks
+
+        return context
+
+
 def host_device_permission(request, room_pk):
     room = Room.objects.get(pk=room_pk)
     devices = Device.objects.filter(room=room)
@@ -129,3 +147,4 @@ def ajax_add_checkout_task(request):
     else:
         CheckOutTask.objects.create(device=device, task=task, preferred_state=state)
     return JsonResponse(True, safe=False)
+

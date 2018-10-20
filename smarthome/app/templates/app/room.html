@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+
+{% block body %}
+<b>{{room.name}}</b></br>
+    {% if permissions %}
+Permissions:</br>
+        {% for perm in permissions %}
+            {{ perm }}
+        {% endfor %}
+    {% endif  %}
+</br>
+    {% if tasks %}
+Checkout procedure:</br>
+        {% for task in tasks %}
+            {{ task }}
+        {% endfor %}
+    {% endif  %}
+{% endblock %}

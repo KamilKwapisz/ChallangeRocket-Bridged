@@ -96,5 +96,6 @@ class Sensors(models.Model):
 
 class CheckOutTask(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
+    # room = models.ForeignKey(Room, on_delete=models.CASCADE)
     task = models.CharField(max_length=100)
     preferred_state = models.BooleanField(default=False)
