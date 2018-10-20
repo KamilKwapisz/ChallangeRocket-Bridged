@@ -1,0 +1,10 @@
+button.disabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+    text-color: gray;
+    hover: none;
+}
+

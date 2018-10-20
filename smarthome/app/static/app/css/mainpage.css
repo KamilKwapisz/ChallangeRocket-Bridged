@@ -1,0 +1,547 @@
+a {
+    text-decoration: none;
+}
+
+#map {
+    position: relative;
+    width: 100%; /* The width is the width of the web page */
+}
+
+#formularz-na-mapie {
+    transition: margin-left .5s;
+    top: 12%;
+    left: 5%;
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    box-shadow: 15px 10px 30px 0;
+    width: 20%;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.container-burger {
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    margin-left: 40%;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 8px;
+    transition: 0.4s;
+}
+
+.bar1 {
+    margin-top: 15px;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+#checkboxy {
+    display: none;
+}
+
+#wyniki {
+    transition: margin-left .5s;
+    top: 12%;
+    right: 2%;
+    z-index: 10;
+    position: absolute;
+    width: 25%;
+    padding: 0 20px;
+}
+
+/* The side navigation menu */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #2f2f2f;
+    color: white;
+    text-align: right;
+}
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 11; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 0px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+nav.navbar {
+    margin-bottom: 0;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+
+    .row.content {
+        height: auto;
+    }
+}
+
+#mySidenav > a:hover {
+    color: blueviolet;
+}
+
+.white-bg {
+    background: #ffffff !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 10px 0;
+}a {
+    text-decoration: none;
+}
+
+#map {
+    position: relative;
+    width: 100%; /* The width is the width of the web page */
+}
+
+#formularz-na-mapie {
+    transition: margin-left .5s;
+    top: 12%;
+    left: 5%;
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    box-shadow: 15px 10px 30px 0;
+    width: 20%;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.container-burger {
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    margin-left: 40%;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 8px;
+    transition: 0.4s;
+}
+
+.bar1 {
+    margin-top: 15px;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+#checkboxy {
+    display: none;
+}
+
+#wyniki {
+    transition: margin-left .5s;
+    top: 12%;
+    right: 2%;
+    z-index: 10;
+    position: absolute;
+    width: 25%;
+    padding: 0 20px;
+}
+
+/* The side navigation menu */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #2f2f2f;
+    color: white;
+    text-align: right;
+}
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 11; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 0px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+nav.navbar {
+    margin-bottom: 0;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+
+    .row.content {
+        height: auto;
+    }
+}
+
+#mySidenav > a:hover {
+    color: blueviolet;
+}
+
+.white-bg {
+    background: #ffffff !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 10px 0;
+}
+a {
+    text-decoration: none;
+}
+
+#map {
+    position: relative;
+    width: 100%; /* The width is the width of the web page */
+}
+
+#formularz-na-mapie {
+    transition: margin-left .5s;
+    top: 12%;
+    left: 5%;
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    box-shadow: 15px 10px 30px 0;
+    width: 20%;
+    padding: 20px;
+}
+
+.container-burger {
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    margin-left: 40%;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 8px;
+    transition: 0.4s;
+}
+
+.bar1 {
+    margin-top: 15px;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+#checkboxy {
+    display: none;
+}
+
+#wyniki {
+    transition: margin-left .5s;
+    top: 12%;
+    right: 2%;
+    z-index: 10;
+    position: absolute;
+    width: 25%;
+    padding: 0 20px;
+}
+
+/* The side navigation menu */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #2f2f2f;
+    color: white;
+    text-align: right;
+}
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 11; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 0px;
+}
+
+.row
+{
+		text-align: center;
+}
+.row table
+{
+	width: 100%;
+}
+.row table td
+{
+	font-size: x-large;
+	text-align: left;
+}
+.row form input
+{
+	height: 50px;
+}
+.row form a i
+{
+	display: none;
+}
+.row i
+{
+	font-size: xx-large;
+}
+.col-xs-6
+{
+	width: 100% !important;
+}
+.col-xs-6 img
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+.row.container
+{
+	width: 100%;
+}
+.row
+{
+	font-size: medium;
+}
+.row br
+{
+	margin: 0 10px;
+}
+.br-widget
+{
+	width: 100%;
+
+}
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.navbar {
+    margin-bottom: 0 !important;
+    border-radius: 0;
+}
+
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+
+    .row.content {
+        height: auto;
+    }
+}
