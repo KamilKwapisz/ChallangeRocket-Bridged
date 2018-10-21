@@ -191,3 +191,11 @@ def change_access_code(request, flat_pk):
     return HttpResponse("changed")
 
 
+def tenants_list(request):
+    username = request.user.username
+    user = User.objects.get(username=username)
+    profile = Profile.objects.get(user=user)
+    host = Host.objects.get(profile=profile)
+    rents = Rent.objects.filter(host=host)
+    context = dict(rents=rents)
+    return render(request, "app/tenants.html", context)
