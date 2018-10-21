@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% block body %}
+    <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Tenants</h1>
+                </div>
+    </div>
+    <div class="row">
+    {% for rent in rents %}
+        <a href="{% url 'app:flat-detail' rent.flat.pk %}">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading rounded-circle">
+                            <div class="row">
+                            <div class="col-xs room">
+                                    {% if rent.tenant.profile.user.username == 'Jack' or rent.tenant.profile.user.username == 'John' %}
+                                            <img class = "picsunder" src = "https://www.shareicon.net/data/128x128/2016/08/18/814007_people_512x512.png">
+                                    {% else %}
+                                            <img class = "picsunder" src = "https://www.shareicon.net/data/128x128/2016/08/18/814001_people_512x512.png">
+                                    {% endif %}
+                                    <label></label>
+                                    <label>Tenant name: {{rent.tenant.profile.user.username}}</label>
+                                    <label>Begin date: {{rent.begin_date}}</label>
+                                    <label>End date: {{rent.end_date}} </label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </a>
+    {% endfor %}
+    </div>
+{% endblock %}
