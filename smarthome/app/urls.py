@@ -16,6 +16,7 @@ urlpatterns = [
     path('room/<int:room_pk>/devices', views.host_device_permission, name='room-devices'),
 
     path('change-state/<str:device_id>/<str:state>', views.change_device_state, name='change-state'),
+    path('flat/<int:flat_pk>/code', views.change_access_code, name='change-code'),
 
     path('ajax/change_permission', views.ajax_change_device_permission, name='change-permission'),
     path('ajax/checkout-task', views.ajax_add_checkout_task, name='checkout-task'),
