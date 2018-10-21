@@ -30,7 +30,7 @@
 </head>
 <body style="margin-top: 5rem">
 <div class="container">
-    <div class="row">
+        <h1 id="code" class="display-1">Enter the door code</h1>
         <table class="table-responsive">
             <tr>
                 <td>
@@ -67,11 +67,13 @@
 
         </table>
     </div>
+
     <script>
         var code = new String();
 
         function add(i) {
             code = code + i.toString();
+            $("#code").text(code);
             if (code.length > 3) {
                 $.ajax({
                         type: "POST",
@@ -83,9 +85,10 @@
                         success: function (response) {
                             console.log("done!");
                         },
-                    error: function(err){
-                            console.log("doesnt work tho")
-                    }
+                        error: function (err) {
+                            code = "";
+                            $("#code").text("Wrong code! Try again!");
+                        }
                     }
                 )
             }
