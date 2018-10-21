@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('flats/', views.flats_list, name='flats-list'),
+    path('tenants/', views.tenants_list, name='tenants'),
     path('flat/<int:pk>', views.FlatDetailView.as_view(), name='flat-detail'),
     path('flat/<int:flat_pk>/keypad', views.access_code, name='keypad'),
     path('room/<int:pk>', views.RoomDetailView.as_view(), name='room-detail'),
