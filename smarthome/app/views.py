@@ -153,10 +153,10 @@ def ajax_add_checkout_task(request):
 
 def ajax_validate_access_code(request):
     data = request.GET.dict()
-    flat_id = data['flat_id']
+    flat_id = int(data['flat_id'])
     code = data['code']
     valid_code = Flat.objects.get(pk=flat_id).access_code
-    if valid_code == code and len(code) == 4 and code.isdigit():
+    if valid_code == code and len(code) == 4:
         return JsonResponse(True, safe=False)
     else:
         return JsonResponse(False, safe=False)
@@ -168,8 +168,6 @@ def access_code(request, flat_pk):
 
 
 def change_device_state(request, device_id, state):
-    # device_id = request.POST.get("device_id", None)
-    # state = request.POST.get("state", None)
     if device_id:
         device = Device.objects.get(entity_id=device_id)
         if state == "on":
