@@ -82,12 +82,16 @@
                         "code": code
                     },
                     success: function (response) {
-                        console.log("done!");
-                    }
-                    ,
+                        console.log(response)
+                        if (!response) {
+                            code = "";
+                            $("#code").text("Wrong code! Try again!");
+                        } else {
+                            $("#code").text("Welcome home!");
+                        }
+                    },
                     error: function (err) {
-                        code = "";
-                        $("#code").text("Wrong code! Try again!");
+                        console.log("error");
                     }
                 }
             )
