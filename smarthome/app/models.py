@@ -44,6 +44,7 @@ class Flat(models.Model):
     guests_number = models.IntegerField(default=1)
     rooms_number = models.IntegerField(default=2)
     host = models.ForeignKey(Host, on_delete=models.CASCADE, default=1)
+    access_code = models.CharField(default="1234", max_length=4)
 
     def __str__(self):
         return self.address
