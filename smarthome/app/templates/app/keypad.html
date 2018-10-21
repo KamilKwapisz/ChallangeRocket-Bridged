@@ -78,7 +78,7 @@
                     type: "GET",
                     url: '{% url "app:validate-code" %}',
                     data: {
-                        "flat_id": "{{flat_id}}",
+                        "flat_id": {{flat_id}},
                         "code": code
                     },
                     success: function (response) {
