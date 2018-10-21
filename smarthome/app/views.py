@@ -156,7 +156,7 @@ def ajax_validate_access_code(request):
     flat_id = data['flat_id']
     code = data['code']
     valid_code = Flat.objects.get(pk=flat_id).access_code
-    if valid_code == code and len(code) == 4 and code.isdigit():
+    if valid_code == code and len(code) == 4:
         return JsonResponse(True, safe=False)
     else:
         return JsonResponse(False, safe=False)
