@@ -172,11 +172,14 @@ def access_code(request, flat_pk):
 def change_device_state(request, device_id, state):
     if device_id:
         device = Device.objects.get(entity_id=device_id)
-        if state == "on":
+        if state == "on" or state == "off":
             if device.state:
                 device.state = False
             else:
                 device.state = True
+            # device.state = True
+        # elif state == "off":
+        #     device.state = False
         device.save()
     return HttpResponse("hello")
 

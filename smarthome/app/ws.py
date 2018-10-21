@@ -11,10 +11,22 @@ def parse_state_json(json_data):
         data = json_data['event']['data']
         entity_id = data['entity_id']
         name = data['new_state']['attributes']['friendly_name']
-        new_state = data['new_state']['state']
-        print(new_state)
-        url = f'http://127.0.0.1:5000/change-state/{entity_id}/{new_state}'
-        requests.get(url)
+        if name in ('Red', 'Blue', "Green"):
+            new_state = data['new_state']['state']
+            print(name)
+            print(new_state)
+            if name == "Red":
+                entity_id = "binary_sensor.tv"
+                url = f'http://127.0.0.1:5000/change-state/{entity_id}/{new_state}'
+                requests.get(url)
+            if name == "Blue":
+                entity_id = "binary_sensor.kitchen_window"
+                url = f'http://127.0.0.1:5000/change-state/{entity_id}/{new_state}'
+                requests.get(url)
+            if name == "Green":
+                entity_id = "binary_sensor.power_stri"
+                url = f'http://127.0.0.1:5000/change-state/{entity_id}/{new_state}'
+                requests.get(url)
     except Exception as e:
         pass
 
