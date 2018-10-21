@@ -20,5 +20,4 @@ urlpatterns = [
     path('ajax/change_permission', views.ajax_change_device_permission, name='change-permission'),
     path('ajax/checkout-task', views.ajax_add_checkout_task, name='checkout-task'),
     path('ajax/validate-code', views.ajax_validate_access_code, name='validate-code'),
-
 ]

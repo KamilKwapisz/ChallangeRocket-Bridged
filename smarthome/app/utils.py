@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 def get_sensors_info() -> list:
