@@ -1,18 +1,54 @@
 {% extends 'app/base.html' %}
 
 {% block body %}
-    {% if devices %}
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">{{room.name}}</h1>
-                    </div>
-                    {% for device in devices %}
-                    <div>{{device.name}}</div>
-                    <input type="checkbox" data-toggle="toggle" data-on="Allow" data-off="Deny">
-                    <div><br><div>
-                    {% endfor %}
-                </div>
+{% if devices %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{room.name}}</h1>
+        </div>
+        {% for device in devices %}
+        <div>{{device.name}}</div>
+        <input type="checkbox" data-toggle="toggle" data-on="Allow" data-off="Deny">
+        <div><br>
+            <div>
+                {% endfor %}
             </div>
-    {% endif %}
-{% endblock %}
+            <script>
+    var code = new String();
+
+    function change_perm(i) {
+        <!--code = code + i.toString();-->
+        <!--$("#code").text(code);-->
+        <!--if (code.length > 3) {-->
+            <!--console.log("send");-->
+            $.ajax({
+                    type: "GET",
+                    url: '{% url "app:change-permission" %}',
+                    data: {
+                        "flat_id": {{flat_id}},
+                        "code": code
+                    },
+                    success: function (response) {
+                        console.log(response)
+                        if (!response) {
+                            code = "";
+                            $("#code").text("Wrong code! Try again!");
+                        } else {
+                            $("#code").text("Welcome home!");
+                        }
+                    },
+                    error: function (err) {
+                        console.log("error");
+                    }
+                }
+            )
+        }
+    }
+
+
+
+            </script>
+        </div>
+        {% endif %}
+        {% endblock %}

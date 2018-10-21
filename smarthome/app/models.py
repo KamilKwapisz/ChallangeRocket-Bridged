@@ -92,8 +92,8 @@ class Device(models.Model):
 
 
 class Rent(models.Model):
-    hosts = models.ForeignKey(Host, on_delete=models.CASCADE)
-    tenants = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    host = models.ForeignKey(Host, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     flat = models.ForeignKey(Flat, on_delete=models.CASCADE, blank=True, null=True)
     begin_date = models.DateField()
     end_date = models.DateField()
