@@ -1,0 +1,100 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="TokyoCommit">
+    <title>{% block title %}IoT{% endblock %}</title>
+
+    <!-- material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    <script src="{% static 'app/vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'app/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <style>
+        button {
+            margin-top: 2rem;
+        }
+    </style>
+
+</head>
+<body style="margin-top: 5rem">
+<div class="container">
+    <div class="row">
+        <table class="table-responsive">
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-info" value="1" onclick="add(1)">1</button>
+                <td>
+                    <button type="button" class="btn btn-info" value="2" onclick="add(2)">2</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" value="3" onclick="add(3)">3</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-info" value="1" onclick="add(4)">4</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" value="2" onclick="add(5)">5</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" value="3" onclick="add(6)">6</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-info" value="1" onclick="add(7)">7</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" value="2" onclick="add(8)">8</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" value="3" onclick="add(9)">9</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <script>
+        var code = new String();
+
+        function add(i) {
+            code = code + i.toString();
+            if (code.length > 3) {
+                $.ajax({
+                        type: "POST",
+                        url: '{% url "app:validate-code" %}',
+                        data: {
+                            "flat_id": "{{ flat_id }}",
+                            "code": code
+                        },
+                        success: function (response) {
+                            console.log("done!");
+                        },
+                    error: function(err){
+                            console.log("doesnt work tho")
+                    }
+                    }
+                )
+            }
+        }
+
+
+    </script>
+</div>
+
+</body>
+
+</html>

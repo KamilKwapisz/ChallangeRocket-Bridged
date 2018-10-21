@@ -1,0 +1,66 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="TokyoCommit">
+    <title>{% block title %}IoT{% endblock %}</title>
+
+    <!-- material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    <script src="{% static 'app/js/transition.min.js' %}"></script>
+
+    <script src="{% static 'app/vendor/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'app/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <style>
+        button {
+            margin-top: 2rem;
+        }
+    </style>
+
+</head>
+<body style="margin-top: 5rem">
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row">
+                <h1 class="display-1">
+                    Before you leave...
+                </h1>
+            </div>
+            <div class="row list-group list-group-flush">
+                {% for element in list %}
+                    <li id="btn{{ forloop.counter }}" type="button"
+                        class="list-group-item list-group-item-action">
+                        {{ element.text }}
+                    </li>
+                {% endfor %}
+            </div>
+            <button id="done" class="btn btn-outline-primary btn-lg">Done!</button>
+            <script>
+                $("#done").click(() => {
+                    window.location.reload()
+                })
+            </script>
+        </div>
+        <div class="col-md-5 float-right">
+            <img src="{% static 'app/img/bye.png' %}" class="img-responsive">
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>
