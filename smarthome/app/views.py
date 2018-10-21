@@ -173,9 +173,10 @@ def change_device_state(request, device_id, state):
     if device_id:
         device = Device.objects.get(entity_id=device_id)
         if state == "on":
-            device.state = True
-        elif state == "off":
-            device.state = False
+            if device.state:
+                device.state = False
+            else:
+                device.state = True
         device.save()
     return HttpResponse("hello")
 
