@@ -162,6 +162,19 @@ def ajax_validate_access_code(request):
         return JsonResponse(False, safe=False)
 
 
-def access_code(request, flat_id):
-    context = dict(flat_id=flat_id)
+def access_code(request, flat_pk):
+    context = dict(flat_id=flat_pk)
     return render(request, "app/keypad.html", context)
+
+
+def change_device_state(request, device_id, state):
+    # device_id = request.POST.get("device_id", None)
+    # state = request.POST.get("state", None)
+    if device_id:
+        device = Device.objects.get(entity_id=device_id)
+        if state == "on":
+            device.state = True
+        elif state == "off":
+            device.state = False
+        device.save()
+    return HttpResponse("hello")

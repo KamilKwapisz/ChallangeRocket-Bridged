@@ -11,9 +11,11 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('flats/', views.flats_list, name='flats-list'),
     path('flat/<int:pk>', views.FlatDetailView.as_view(), name='flat-detail'),
-    path('flat/<int:pk>/keypad', views.access_code, name='keypad'),
+    path('flat/<int:flat_pk>/keypad', views.access_code, name='keypad'),
     path('room/<int:pk>', views.RoomDetailView.as_view(), name='room-detail'),
     path('room/<int:room_pk>/devices', views.host_device_permission, name='room-devices'),
+
+    path('change-state/<str:device_id>/<str:state>', views.change_device_state, name='change-state'),
 
     path('ajax/change_permission', views.ajax_change_device_permission, name='change-permission'),
     path('ajax/checkout-task', views.ajax_add_checkout_task, name='checkout-task'),

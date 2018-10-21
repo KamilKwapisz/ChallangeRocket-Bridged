@@ -1,14 +1,43 @@
 {% extends 'app/base.html' %}
 
 {% block body %}
-<b>{{flat.address}}</b>
-</br>
-</br>
-{% if rooms %}
-    Rooms:</br>
+<div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Rooms</h1>
+                </div>
+    </div>
+    <div class="row">
     {% for room in rooms %}
-        <a href="{% url 'app:room-detail' room.pk %}" >{{ room.name }}</a></br>
+                <div class="col-lg-3 col-md-6">
+                                    {% if room.room_type == 'bathroom' %} 
+                                    <div class="panel panel-green">
+                                    {% elif room.room_type == 'bedroom' %}
+                                    <div class="panel panel-yellow">
+                                    {% elif room.room_type == 'kitchen' %}
+                                    <div class="panel panel-red">
+                                    {% else %}
+                                    <div class="panel panel-primary">
+                                    {% endif %}
+                        <div class="panel-heading">
+                            <div class="row">
+                            <div class="col-xs-2">
+                            	<label>{{room.room_type.title}}</label>
+                            	{% for device in room.devices %}
+                            	    {% if room.room_type == 'bathroom' %}
+                                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="success">
+                                    {% elif room.room_type == 'bedroom' %}
+                                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="warning">
+                                    {% elif room.room_type == 'kitchen' %}
+                                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="danger">
+                                    {% else %}
+                                    <input type="checkbox" checked data-toggle="toggle">
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     {% endfor %}
-{% endif %}
-
+    </div>
 {% endblock %}
