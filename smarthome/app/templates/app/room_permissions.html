@@ -29,7 +29,7 @@
                         "flat_id": {{flat_id}},
                         "code": code
                     },
-                    success: function (response) {
+                    success: function(response) {
                         console.log(response)
                         if (!response) {
                             code = "";
@@ -38,7 +38,7 @@
                             $("#code").text("Welcome home!");
                         }
                     },
-                    error: function (err) {
+                    error: function(err) {
                         console.log("error");
                     }
                 }

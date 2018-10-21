@@ -10,6 +10,7 @@ from random import randint
 
 from .forms import UserForm
 from .models import Room, Host, Profile, Flat, Device, Tenant, Rent, CheckOutTask
+from .utils import get_sensors_info
 
 import homeassistant.remote as remote
 
@@ -203,3 +204,17 @@ def tenants_list(request):
     rents = Rent.objects.filter(host=host)
     context = dict(rents=rents)
     return render(request, "app/tenants.html", context)
+
+
+def checkout(request):
+    sensors = get_sensors_info()
+    questions = dict()
+    print(sensors[0])
+    for s in sensors:
+        if s['state'] == "on":
+            questions[s['name']] = s['entity_id']
+
+    context = {
+        "questions": questions,
+    }
+    return render(request, "app/checking_out_list.html", context)

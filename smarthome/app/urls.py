@@ -15,6 +15,7 @@ urlpatterns = [
     path('flat/<int:flat_pk>/keypad', views.access_code, name='keypad'),
     path('room/<int:pk>', views.RoomDetailView.as_view(), name='room-detail'),
     path('room/<int:room_pk>/devices', views.host_device_permission, name='room-devices'),
+    path('bye/', views.checkout, name='checkout'),
 
     path('change-state/<str:device_id>/<str:state>', views.change_device_state, name='change-state'),
     path('flat/<int:flat_pk>/code', views.change_access_code, name='change-code'),

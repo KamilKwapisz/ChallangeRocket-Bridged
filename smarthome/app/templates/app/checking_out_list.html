@@ -40,10 +40,10 @@
                 </h1>
             </div>
             <div class="row list-group list-group-flush">
-                {% for element in list %}
+                {% for key, value in questions.items %}
                     <li id="btn{{ forloop.counter }}" type="button"
                         class="list-group-item list-group-item-action">
-                        {{ element.text }}
+                        {{ key }}
                     </li>
                 {% endfor %}
             </div>
@@ -54,9 +54,9 @@
                 })
             </script>
         </div>
-        <div class="col-md-5 float-right">
-            <img src="{% static 'app/img/bye.png' %}" class="img-responsive">
-        </div>
+        <!--<div class="col-md-5 float-right">-->
+            <!--<img src="{% static 'app/img/bye.png' %}" class="img-responsive">-->
+        <!--</div>-->
     </div>
 
 </div>
