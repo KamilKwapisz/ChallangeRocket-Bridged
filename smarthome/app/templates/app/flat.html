@@ -20,9 +20,21 @@
                                     {% endif %}
                         <div class="panel-heading">
                             <div class="row">
-                            <div class="col-xs-2">
-                            	<label>{{room.room_type.title}}</label>
+                            <div class="col-xs-6 col-sm-4">
+                            <div>
+                            	<label>{{room.name.title}}</label>
+                            </div>
+                            	{% if room.room_type == 'bathroom' %}
+                            	    <img class = "picsunder" src = "https://www.shareicon.net/data/128x128/2016/06/27/787203_bathroom_512x512.png">
+                                    {% elif room.room_type == 'bedroom' %}
+                                    <img class = "picsunder" src = "https://www.shareicon.net/data/128x128/2016/07/31/804850_furniture_512x512.png">
+                                    {% elif room.room_type == 'kitchen' %}
+                                    <img class = "picsunder" src = "https://www.shareicon.net/data/128x128/2016/08/19/816881_tea_512x512.png">
+                                    {% else %}
+                                    <img class = "picsunder" src = "https://www.shareicon.net/data/128x128/2016/09/21/830512_business_512x512.png">
+                                    {% endif %}
                             	{% for device in room.devices %}
+                            	<label>
                             	    {% if room.room_type == 'bathroom' %}
                                     <input type="checkbox" checked data-toggle="toggle" data-onstyle="success">
                                     {% elif room.room_type == 'bedroom' %}
@@ -32,6 +44,7 @@
                                     {% else %}
                                     <input type="checkbox" checked data-toggle="toggle">
                                     {% endif %}
+                                {{device.name}}</label>
                                 {% endfor %}
                             </div>
                             </div>
