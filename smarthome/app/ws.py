@@ -24,6 +24,7 @@ def parse_state_json(json_data):
                 url = f'http://127.0.0.1:5000/change-state/{entity_id}/{new_state}'
                 requests.get(url)
             if name == "Green":
+                print("yup")
                 entity_id = "binary_sensor.power_stri"
                 url = f'http://127.0.0.1:5000/change-state/{entity_id}/{new_state}'
                 requests.get(url)

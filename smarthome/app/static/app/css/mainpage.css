@@ -7,6 +7,11 @@ a {
     width: 100%; /* The width is the width of the web page */
 }
 
+.picsunder{
+    padding-bottom: 20px;
+}
+
+
 #formularz-na-mapie {
     transition: margin-left .5s;
     top: 12%;
@@ -545,3 +550,4 @@ a {
         height: auto;
     }
 }
+
