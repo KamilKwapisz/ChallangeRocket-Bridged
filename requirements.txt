@@ -16,7 +16,7 @@ Jinja2==2.10
 MarkupSafe==1.0
 multidict==4.4.2
 pycparser==2.19
-PyJWT==1.6.4
+PyJWT==2.4.0
 pytz==2018.5
 PyYAML==3.13
 requests==2.19.1
